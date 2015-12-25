@@ -1,0 +1,27 @@
+package com.example.tmooc.adapter;
+
+import java.util.List;
+import com.example.tmooc.entity.Book;
+
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+
+public class BookAdapter extends ArrayAdapter<Book> {
+
+	private int resourceId;
+	private Context context;
+	public BookAdapter(Context context, int textViewResourceId,
+			List<Book> objects) {
+		super(context, textViewResourceId, objects);
+		this.resourceId=textViewResourceId;
+		this.context=context;
+	}
+	
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		
+		return super.getView(position, convertView, parent);
+	}
+}

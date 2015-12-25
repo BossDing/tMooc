@@ -1,0 +1,69 @@
+package com.example.tmooc;
+
+import android.R.anim;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+
+public class CourseCollectActivity extends BaseActivity {
+	private PopupWindow menu ;
+	private LayoutInflater inflater ;
+	private View layout ;
+	private Button btn_show ;
+	private ListView list ;
+	
+	String[] items = new String[]{
+			"test1",
+			"test2",
+			"test3",
+			"test4",
+			"test5",
+	} ; 
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.layout_course_collect) ;
+		initMenu() ;
+		list = (ListView)findViewById(R.id.lv_course) ;
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,items) ;
+		list.setAdapter(adapter) ;
+		btn_show = (Button)findViewById(R.id.btn_showMenu) ;
+		btn_show.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (!menu.isShowing()&&menu.isFocusable()) {
+					showMenu() ;
+				}else {
+					menu.dismiss() ;
+				}
+			}
+			
+		}) ;
+	}
+	
+	
+	private void showMenu() {
+		// TODO Auto-generated method stub
+		 menu.showAtLocation(layout,Gravity.RELATIVE_LAYOUT_DIRECTION|Gravity.CENTER_HORIZONTAL,0,0) ; //设置在屏幕中的显示位置
+	}
+	private void initMenu() {
+		// TODO Auto-generated method stub
+
+		//获取inflater
+		inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE) ;
+		//获取popupMenu布局
+		layout = inflater.inflate(R.layout.menu, null) ;
+		//设置popupWindow
+		menu = new PopupWindow(layout, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT) ;
+	}
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory
+        android:key="setting"
+        android:title="用户中心"
+        android:summary="此处用户进行修改用户名，密码等操作">
+        	<Preference
+        	    android:key="user_setting"
+        	    android:title="用户信息修改"/>
+	</PreferenceCategory>
+	<PreferenceCategory
+        android:key="update"
+        android:title="版本信息"
+        android:summary="此处用户进行更新版本操作">
+        	<Preference
+        	    android:key="update_software"
+        	    android:title="版本更新"/>
+        	<Preference
+        	    android:key="software_explain"
+        	    android:title="版本说明"/>
+        	<Preference
+        	    android:key="software_author"
+        	    android:title="软件作者"/>
+	</PreferenceCategory>
+	<PreferenceCategory
+        android:key="exit"
+        android:title="用户退出"
+        android:summary="此处用户进行退出操作">
+        	<Preference
+        	    android:key="user_exit"
+        	    android:title="用户退出"/>
+	</PreferenceCategory>
+</PreferenceScreen>

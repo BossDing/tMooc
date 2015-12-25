@@ -1,0 +1,152 @@
+package com.example.tmooc;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.example.tmooc.BookActivity.MyTask;
+import com.example.tmooc.adapter.BookAdapter;
+import com.example.tmooc.adapter.CollectBookAdapter;
+import com.example.tmooc.entity.Book;
+import com.example.tmooc.utils.HttpUtils;
+import com.example.tmooc.utils.MyConstants;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.PopupMenu;
+import android.widget.PopupMenu.OnMenuItemClickListener;
+import android.widget.Toast;
+
+public class CourseCollectActivity extends BaseActivity {
+	private ListView list ;
+	private PopupMenu popupMenu ;
+	private Button button ;
+	private Menu menu ;
+	private ProgressDialog dialog ;
+	CollectBookAdapter adapter ;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.layout_course_collect) ;
+		initPopupMenu() ;
+		dialog = new ProgressDialog(this);
+		dialog.setTitle("提示") ;
+		dialog.setMessage("正在加载。。。") ;
+		SharedPreferences sharedPreferences = getSharedPreferences("userId", MODE_PRIVATE) ;
+		int user_id = sharedPreferences.getInt("userId_Message", 0) ;
+		String[] maps ={MyConstants.URL+"findBookByCollect",user_id+""};
+		new MyTask().execute(maps);
+		
+		
+		button = (Button)findViewById(R.id.button1) ;
+		button.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				popupMenu.show() ;
+			}
+		}) ;
+		list = (ListView)findViewById(R.id.lv_course) ;
+		popupMenu.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+			
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				// TODO Auto-generated method stub
+				switch (item.getItemId()) {
+				case R.id.cancel:
+					Toast.makeText(CourseCollectActivity.this, "you click news", Toast.LENGTH_SHORT).show() ;
+					break;
+				case R.id.all:
+					Toast.makeText(CourseCollectActivity.this, "you click open", Toast.LENGTH_SHORT).show() ;
+					break;
+				case R.id.delete:
+					Toast.makeText(CourseCollectActivity.this, "you click open", Toast.LENGTH_SHORT).show() ;
+					break;
+				default:
+					break;
+				}
+				
+				return false;
+			}
+		}) ;
+	}
+	private void initPopupMenu() {
+		// TODO Auto-generated method stub
+		popupMenu = new PopupMenu(this,findViewById(R.id.button1)) ;
+		menu = popupMenu.getMenu() ;
+		MenuInflater inflater = getMenuInflater() ;
+		inflater.inflate(R.menu.popupmenu, menu) ;
+	}
+
+	public class MyTask extends AsyncTask<String,Void,List<Book>> {
+		/**
+		 * 执行之前调用此方法
+		 */
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			dialog.show() ;
+		}
+
+		/**
+		 * 后台执行操作
+		 * @return 
+		 */
+
+		@Override
+		protected  List<Book> doInBackground(String... params) {
+			Map<String, Object> map = new HashMap<String, Object>() ;
+			map.put("user_id", params[1]) ;
+			String strJson = HttpUtils.sendPostMethod(params[0],map,"utf-8");
+			Log.i("aaa", strJson);
+			Type type=new TypeToken<List<Book>>(){}.getType();
+			Gson gson=new Gson();
+			List<Book> books = gson.fromJson(strJson, type);
+			return books;
+		}
+
+		/**
+		 * 执行完操作后
+		 */
+
+		@Override
+		protected void onPostExecute( final List<Book> books) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(books);
+			adapter=new CollectBookAdapter(getApplication(), R.layout.collect_book_item, books);
+			list.setAdapter(adapter);
+			list.setOnItemClickListener(new OnItemClickListener() {
+
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view,
+						int position, long id) {
+					Intent intent=new Intent(CourseCollectActivity.this,BookInfoActivity.class);
+					intent.putExtra("book", books.get(position));
+					startActivity(intent);
+					
+				}
+			});
+			dialog.dismiss() ;
+		}
+	}
+}

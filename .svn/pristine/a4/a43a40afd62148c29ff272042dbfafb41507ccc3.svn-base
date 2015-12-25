@@ -1,0 +1,91 @@
+package com.example.tmooc;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.tmooc.utils.MyConstants;
+
+public class SelfActivity extends Activity implements OnClickListener{
+	
+	
+	protected static final int USER = 1;
+	private ImageView iv_avatar ;
+	private TextView tv_username ;
+	private RelativeLayout rl_course_collect ;
+	private RelativeLayout rl_download ;
+	private RelativeLayout rl_mytask ;
+	private RelativeLayout rl_vip ;
+	private RelativeLayout rl_usersetting ;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.layout_self);
+		
+		//初始化组件
+		initView() ;
+		//获取用户姓名
+	}
+	private void initView() {
+		// TODO Auto-generated method stub
+		iv_avatar = (ImageView)findViewById(R.id.iv_avatar) ;
+		tv_username = (TextView)findViewById(R.id.tv_username) ;
+		rl_course_collect = (RelativeLayout)findViewById(R.id.rl_course_collect) ;
+		rl_download = (RelativeLayout)findViewById(R.id.rl_download) ;
+		rl_mytask = (RelativeLayout)findViewById(R.id.rl_mytask) ;
+		rl_usersetting = (RelativeLayout)findViewById(R.id.rl_usersetting) ;
+		rl_vip = (RelativeLayout)findViewById(R.id.rl_vip) ;
+		
+		rl_course_collect.setOnClickListener(this) ;
+		rl_download.setOnClickListener(this) ;
+		rl_mytask.setOnClickListener(this) ;
+		rl_usersetting.setOnClickListener(this) ;
+		rl_vip.setOnClickListener(this) ;
+	}
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.rl_course_collect:
+				Toast.makeText(this, "暂未完成", Toast.LENGTH_SHORT).show() ;
+			break;
+		case R.id.rl_download:
+			Toast.makeText(this, "暂未完成", Toast.LENGTH_SHORT).show() ;
+			break ;
+		case R.id.rl_mytask:
+			Toast.makeText(this, "暂未完成", Toast.LENGTH_SHORT).show() ;
+			break;
+		case R.id.rl_vip:
+			Toast.makeText(this, "暂未完成", Toast.LENGTH_SHORT).show() ;
+			break;
+		case R.id.rl_usersetting:
+			Intent intent = new Intent(this,SettingActivity.class) ;
+			startActivity(intent) ;
+			break;
+		default:
+			break;
+		}
+	}
+
+}

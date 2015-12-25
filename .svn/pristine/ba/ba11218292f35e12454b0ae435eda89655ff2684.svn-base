@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    
+    <ImageView 
+        android:id="@+id/iv_stuView_photo"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/android"/>
+
+    <LinearLayout 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView 
+            android:textColor="#060707"
+            android:id="@+id/tv_stuView_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="5dp"
+            android:textSize="10sp"
+            android:text="Android 动画布局"/>
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView 
+                 android:textColor="#060707"
+                android:id="@+id/timelong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="时长:"
+                android:layout_marginLeft="10dp"/>
+            <TextView 
+            android:textColor="#060707"
+            android:id="@+id/tv_stuView_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_marginLeft="10dp"
+           android:paddingTop="20dp"
+            android:text="2小时20分钟"/>
+            <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                android:gravity="right">
+            <TextView 
+                 android:textColor="#060707"
+                android:id="@+id/zhuz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="作者:"
+                android:layout_marginLeft="10dp"/>
+        <TextView 
+            android:textColor="#060707"
+            android:id="@+id/tv_stuView_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="10dp"
+            
+            android:text="老王"/>
+        </LinearLayout>
+        </LinearLayout>
+        
+        
+    </LinearLayout>
+    
+
+</LinearLayout>

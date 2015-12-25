@@ -1,0 +1,107 @@
+package com.example.tmooc;
+
+
+
+import com.example.tmooc.adapter.MyGridAdapter;
+import com.example.tmooc.entity.MyGridView;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
+
+public class HomeActivity extends Activity {
+	private String[] INFO={"java 学习教程","算法 学习教程","C/C++ 学习教程",
+			"数据库 学习教程","HTML5 学习教程","IOS 学习教程",
+			"Android 学习教程","Web 学习教程","更多 学习教程"};
+	private MyGridView gridview;
+	private MyGridAdapter adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.home);
+        
+        initView();
+    }
+
+
+    private void initView() {
+    	gridview=(MyGridView) findViewById(R.id.gridview);
+    	adapter = new MyGridAdapter(this);
+    	
+    	gridview.setAdapter(adapter);
+    	
+    	gridview.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				
+				switch (arg2) {
+				case 0:
+					SkipIntent(INFO[arg2]);
+					break;
+				case 1:
+					SkipIntent(INFO[arg2]);
+					break;
+				case 2:
+					SkipIntent(INFO[arg2]);
+					break;
+				case 3:
+					SkipIntent(INFO[arg2]);
+					break;
+				case 4:
+					SkipIntent(INFO[arg2]);
+					break;
+				case 5:
+					SkipIntent(INFO[arg2]);
+					break;
+				case 6:
+					SkipIntent(INFO[arg2]);
+					break;
+				case 7:
+					SkipIntent(INFO[arg2]);
+					break;
+				case 8:
+					SkipIntent(INFO[arg2]);
+					break;
+				case 9:
+					SkipIntent(INFO[arg2]);
+					break;
+                    
+				default:
+					break;
+				}
+			}
+		});
+		
+		
+	}
+    
+    public void SkipIntent(String info){
+    	Intent i = new Intent(HomeActivity.this,InfoViewActivity.class);
+    	i.putExtra("msg", info);
+    	startActivity(i);
+    	
+    }
+    
+    
+    
+    
+
+
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+}

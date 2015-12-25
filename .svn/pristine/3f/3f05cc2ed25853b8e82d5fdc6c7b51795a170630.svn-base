@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp" >
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="UesrId:"
+            android:textSize="18sp" 
+           />
+
+        <TextView
+            android:id="@+id/tv_userId"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="20sp"
+            >
+         </TextView>
+
+    </LinearLayout>
+        <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="用户名:"
+            android:textSize="20sp" 
+            />
+
+        <EditText
+            android:id="@+id/et_userName"
+           android:layout_width="0dp"
+            android:layout_weight="1"
+            android:hint="请重新输入账号"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+			android:singleLine="true"
+			android:selectAllOnFocus="true"
+          	 />
+
+    </LinearLayout>
+        <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="用户密码:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_newPassword"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            android:hint="请输入新密码" />
+
+    </LinearLayout>
+      <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="重复密码:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_rePassword"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            android:hint="请再次输入密码" />
+
+    </LinearLayout>
+        <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       	android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="VIP:"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_isVIP"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+             />
+
+    </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+			android:layout_marginTop="15dp"
+            android:text="确认修改"
+            android:textSize="20sp" />
+
+</LinearLayout>

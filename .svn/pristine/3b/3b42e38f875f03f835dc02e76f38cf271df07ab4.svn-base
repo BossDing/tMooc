@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.tmooc"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="14" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.tmooc.MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity android:name="com.example.tmooc.Guide" >
+        </activity>
+        <activity android:name="com.example.tmooc.HomeActivity" >
+        </activity>
+        <activity android:name="com.example.tmooc.StudyIntent" >
+        </activity>
+        <activity android:name="com.example.tmooc.SelfIntent" >
+        </activity>
+        <activity android:name="com.example.tmooc.ArticlesActivity" >
+        </activity>
+        <activity android:name="com.example.tmooc.QuestionActivity" >
+        </activity>
+        <activity android:name="com.example.tmooc.Welcome" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.tmooc.LoginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name="com.example.tmooc.RegistActivity"
+            android:label="@string/title_activity_regist" >
+        </activity>
+    </application>
+
+</manifest>
